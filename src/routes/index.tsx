@@ -101,23 +101,23 @@ function Dashboard() {
           </div>
         </header>
 
-        <div className="grid gap-4 px-4 pb-6 xl:absolute xl:left-[272px] xl:top-[120px] xl:grid-cols-[740px_368px] xl:gap-4 xl:p-0">
-          <div>
+        <div className="grid gap-4 px-4 pb-6 xl:absolute xl:left-[272px] xl:top-[160px] xl:grid-cols-[740px_368px] xl:gap-4 xl:p-0">
+          <div className="min-w-0">
             <section className="relative h-[124px] overflow-hidden rounded-[25px] border border-frame">
-              <div className="absolute left-8 top-[14px] z-10">
-                <h1 className="font-display text-[32px] leading-[42px]">Welcome back, Mayank</h1>
-                <p className="mt-0 w-[349px] font-sans text-base leading-6 text-muted-foreground">Stay one step ahead. Scan, Secure, and<br />stay safe with GillNet AI.</p>
+              <div className="absolute left-8 top-[14px] z-10 max-w-[calc(100%-48px)]">
+                <h1 className="whitespace-nowrap font-display text-2xl leading-[42px] sm:text-[32px]">Welcome back, Mayank</h1>
+                <p className="mt-0 max-w-[349px] font-sans text-sm leading-5 text-muted-foreground sm:text-base sm:leading-6">Stay one step ahead. Scan, Secure, and<br className="hidden sm:block" /> stay safe with GillNet AI.</p>
               </div>
-              <div className="absolute -top-px right-[8px] h-[124px] w-[204px] overflow-hidden rounded-[25px] border border-ink bg-background">
+              <div className="absolute -top-px right-[8px] hidden h-[124px] w-[204px] overflow-hidden rounded-[25px] border border-ink bg-background sm:block">
                 <img src={globeImage} alt="Digital security globe" className="h-full w-full object-cover object-right opacity-80 mix-blend-screen" />
               </div>
             </section>
 
-            <section className="flex h-[124px] items-center gap-2" aria-label="Security statistics">
-              <Metric icon={<Search />} title="Total Scans" value="82" suffix="/100" tone="neutral" width="w-[203px]" progress />
-              <Metric icon={<Shield />} title="Safe Score" value="24" tone="safe" width="w-[184px]" />
-              <Metric icon={<AlertTriangle />} title="Threats" value="5" tone="danger" width="w-[164px]" />
-              <Metric icon={<Database />} title="Detected" value="3" tone="violet" width="w-[164px]" />
+            <section className="grid grid-cols-2 gap-2 py-4 xl:flex xl:h-[124px] xl:grid-cols-none xl:items-center xl:py-0" aria-label="Security statistics">
+              <Metric icon={<Search />} title="Total Scans" value="82" suffix="/100" tone="neutral" width="w-full xl:w-[203px]" progress />
+              <Metric icon={<Shield />} title="Safe Score" value="24" tone="safe" width="w-full xl:w-[184px]" />
+              <Metric icon={<AlertTriangle />} title="Threats" value="5" tone="danger" width="w-full xl:w-[164px]" />
+              <Metric icon={<Database />} title="Detected" value="3" tone="violet" width="w-full xl:w-[164px]" />
             </section>
 
             <section id="scan" className="h-[149px] rounded-[25px] border border-frame px-[26px] pt-[16px]">
@@ -137,9 +137,9 @@ function Dashboard() {
               </div>
             </section>
 
-            <section id="security" className="mt-[14px] h-[166px] rounded-[25px] border border-frame px-[29px] pt-[16px]">
+            <section id="security" className="mt-[14px] min-h-[166px] rounded-[25px] border border-frame px-[29px] pb-5 pt-[16px] xl:h-[166px] xl:pb-0">
               <PanelTitle icon={<Shield />} title="Security Overview" subtitle="Our AI helps you stay protected in real time." />
-              <div className="mt-[10px] grid grid-cols-4 gap-2">
+              <div className="mt-[10px] grid grid-cols-2 gap-2 sm:grid-cols-4">
                 <Feature icon={<Bug />} title="Malware Detection" text="Detect malicious files and links." />
                 <Feature icon={<Anchor />} title="Phishing Protection" text="Identify phishing attempts." />
                 <Feature icon={<LockKeyhole />} title="Password Analysis" text="Check Password security and strength." />
