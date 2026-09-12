@@ -130,10 +130,10 @@ function Dashboard() {
               <div className="mt-[17px]"><ScanField password /></div>
               <div className="mt-[11px] flex items-center font-sans text-[15px] text-muted-foreground">
                 <span className="mr-3">Strength :</span>
-                <div className="flex gap-1">
-                  <i className="h-1 w-[38px] rounded-full bg-safe" /><i className="h-1 w-[38px] rounded-full bg-safe" /><i className="h-1 w-[38px] rounded-full bg-safe" /><i className="h-1 w-[38px] rounded-full bg-progress" />
+                <div className="flex min-w-0 flex-1 gap-1 xl:flex-none">
+                  <i className="h-1 min-w-0 flex-1 rounded-full bg-safe xl:w-[38px] xl:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe xl:w-[38px] xl:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe xl:w-[38px] xl:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-progress xl:w-[38px] xl:flex-none" />
                 </div>
-                <span className="ml-auto mr-4 text-safe">Strong</span>
+                <span className="ml-2 mr-1 shrink-0 text-safe xl:ml-auto xl:mr-4">Strong</span>
               </div>
             </section>
 
