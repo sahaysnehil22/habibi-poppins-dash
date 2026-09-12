@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import type { ReactNode } from "react";
 import {
   AlertTriangle,
   ChevronDown,
@@ -160,7 +161,7 @@ function Dashboard() {
                     <div key={`${domain}-${index}`} className="grid grid-cols-[24px_1fr_auto] items-center gap-3 py-3 font-sans text-[11px]">
                       <span className="grid size-5 place-items-center rounded bg-activity"><Link2 className="size-3" /></span>
                       <span>{domain}</span>
-                      <span className="flex items-center gap-2"><i className={`size-1.5 rounded-full bg-${status === "safe" ? "safe" : status === "suspicious" ? "warning" : "danger"}`} /><b className={`font-normal text-${status === "safe" ? "safe" : status === "suspicious" ? "warning" : "danger"}`}>{status}</b><small className="ml-2 text-[8px] text-muted-foreground">{time}</small></span>
+                      <span className="flex items-center gap-2"><i className={`size-1.5 rounded-full ${status === "safe" ? "bg-safe" : status === "suspicious" ? "bg-warning" : "bg-destructive"}`} /><b className={`font-normal ${status === "safe" ? "text-safe" : status === "suspicious" ? "text-warning" : "text-destructive"}`}>{status}</b><small className="ml-2 text-[8px] text-muted-foreground">{time}</small></span>
                     </div>
                   ))}
                 </div>
@@ -185,14 +186,15 @@ function Dashboard() {
   );
 }
 
-function PanelTitle({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
+function PanelTitle({ icon, title, subtitle }: { icon: ReactNode; title: string; subtitle: string }) {
   return <div className="flex gap-3"><span className="mt-0.5 [&_svg]:size-5">{icon}</span><div><h2 className="font-display text-lg leading-none">{title}</h2><p className="mt-1 font-sans text-[10px] text-muted-foreground">{subtitle}</p></div></div>;
 }
 
-function Metric({ icon, title, value, tone, progress = false }: { icon: React.ReactNode; title: string; value: string; tone: string; progress?: boolean }) {
-  return <div className="flex min-h-[86px] items-center gap-3 rounded-[22px] border border-border px-4"><span className={`grid size-12 shrink-0 place-items-center rounded-full bg-${tone} [&_svg]:size-5`}>{icon}</span><div className="min-w-0 flex-1 text-center"><div className="font-sans text-xs">{title}</div><div className="font-sans text-lg leading-5">{value}</div>{progress && <div className="mt-2 h-1 rounded-full bg-muted"><div className="h-full w-4/5 rounded-full bg-foreground" /></div>}</div></div>;
+function Metric({ icon, title, value, tone, progress = false }: { icon: ReactNode; title: string; value: string; tone: "neutral" | "safe" | "danger" | "violet"; progress?: boolean }) {
+  const toneClass = { neutral: "bg-neutral", safe: "bg-safe/25", danger: "bg-destructive/45", violet: "bg-violet" }[tone];
+  return <div className="flex min-h-[86px] items-center gap-3 rounded-[22px] border border-border px-4"><span className={`grid size-12 shrink-0 place-items-center rounded-full ${toneClass} [&_svg]:size-5`}>{icon}</span><div className="min-w-0 flex-1 text-center"><div className="font-sans text-xs">{title}</div><div className="font-sans text-lg leading-5">{value}</div>{progress && <div className="mt-2 h-1 rounded-full bg-muted"><div className="h-full w-4/5 rounded-full bg-foreground" /></div>}</div></div>;
 }
 
-function Feature({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+function Feature({ icon, title, text }: { icon: ReactNode; title: string; text: string }) {
   return <article className="flex min-h-[72px] gap-2 rounded-[22px] border border-border bg-surface px-3 py-3"><span className="[&_svg]:size-5">{icon}</span><div><h3 className="font-sans text-[10px] leading-tight">{title}</h3><p className="mt-1 font-sans text-[8px] leading-3 text-muted-foreground">{text}</p></div></article>;
 }
