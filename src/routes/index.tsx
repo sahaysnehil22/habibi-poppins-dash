@@ -52,8 +52,8 @@ function ScanField({ password = false, compact = false }: { password?: boolean; 
   const check = () => setMessage(value.trim() ? (password ? "Strong password" : "No immediate threats found") : "Enter something to check");
 
   return (
-    <div className="relative">
-      <div className="flex h-[53px] items-center rounded-[40px] border-2 border-frame bg-background pl-5">
+    <div className="relative min-w-0">
+      <div className="grid min-h-[56px] grid-cols-[auto_minmax(0,1fr)_auto] items-center overflow-hidden rounded-[28px] border-2 border-frame bg-background pl-4 sm:h-[53px] sm:rounded-[40px] sm:pl-5">
         {password ? <LockKeyhole className="size-5 shrink-0" /> : <Link2 className={compact ? "size-6 shrink-0" : "size-5 shrink-0"} />}
         <input
           aria-label={password ? "Password to check" : "URL or suspicious message"}
@@ -62,9 +62,9 @@ function ScanField({ password = false, compact = false }: { password?: boolean; 
           onChange={(event) => { setValue(event.target.value); setMessage(""); }}
           onKeyDown={(event) => event.key === "Enter" && check()}
           placeholder={password ? "Enter your password here..." : "Enter a URL or suspicious message..."}
-          className={`min-w-0 flex-1 bg-transparent px-4 font-sans text-foreground outline-none placeholder:text-foreground ${compact ? "text-xl" : "text-base"}`}
+          className={`w-full min-w-0 bg-transparent px-3 font-sans text-foreground outline-none placeholder:text-foreground sm:px-4 ${compact ? "text-base sm:text-xl" : "text-sm sm:text-base"}`}
         />
-        <Button onClick={check} className={`h-[53px] w-32 shrink-0 rounded-[40px] bg-primary p-0 font-normal text-primary-foreground hover:bg-primary/90 ${compact ? "text-xl" : "text-base"}`}>
+        <Button onClick={check} className={`h-[52px] w-[112px] shrink-0 rounded-[28px] bg-primary p-0 font-normal text-primary-foreground hover:bg-primary/90 sm:h-[53px] sm:w-32 sm:rounded-[40px] ${compact ? "text-base sm:text-xl" : "text-sm sm:text-base"}`}>
           {password ? "Check Now" : "Scan Now"}
         </Button>
       </div>
@@ -77,12 +77,12 @@ function Dashboard() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className="min-h-screen bg-shell p-0 xl:p-0">
-      <div className="relative mx-auto min-h-screen w-full overflow-hidden border-2 border-frame bg-background xl:h-[1040px] xl:min-h-0 xl:max-w-[1440px] xl:rounded-[25px]">
-        <aside className={`${menuOpen ? "flex" : "hidden"} fixed inset-y-0 left-0 z-40 w-[226px] flex-col bg-sidebar-panel xl:absolute xl:inset-y-0 xl:flex`}>
+    <main className="min-h-screen bg-shell p-0 min-[1400px]:p-0">
+      <div className="relative mx-auto min-h-screen w-full overflow-hidden border-2 border-frame bg-background min-[1400px]:h-[1040px] min-[1400px]:min-h-0 min-[1400px]:max-w-[1440px] min-[1400px]:rounded-[25px]">
+        <aside className={`${menuOpen ? "flex" : "hidden"} fixed inset-y-0 left-0 z-40 w-[226px] flex-col bg-sidebar-panel min-[1400px]:absolute min-[1400px]:inset-y-0 min-[1400px]:flex`}>
           <div className="flex h-[99px] items-center justify-between border-b border-sidebar-line px-10">
             <span className="font-brand text-[32px] leading-none text-ink">GillNet AI</span>
-            <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></Button>
+            <Button variant="ghost" size="icon" className="min-[1400px]:hidden" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></Button>
           </div>
           <nav className="flex flex-col items-center gap-11 pt-[72px]" aria-label="Main navigation">
             {navigation.map((item) => (
@@ -91,9 +91,9 @@ function Dashboard() {
           </nav>
         </aside>
 
-        <header className="flex h-[106px] items-center gap-5 px-5 xl:absolute xl:left-[286px] xl:top-0 xl:h-[106px] xl:w-[1116px] xl:px-0">
-          <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu /></Button>
-          <div className="min-w-0 flex-1 xl:w-[740px] xl:flex-none"><ScanField compact /></div>
+        <header className="flex h-[106px] items-center gap-5 px-5 min-[1400px]:absolute min-[1400px]:left-[286px] min-[1400px]:top-0 min-[1400px]:h-[106px] min-[1400px]:w-[1116px] min-[1400px]:px-0">
+          <Button variant="ghost" size="icon" className="min-[1400px]:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu /></Button>
+          <div className="min-w-0 flex-1 min-[1400px]:w-[740px] min-[1400px]:flex-none"><ScanField compact /></div>
           <div className="ml-auto flex items-center gap-3">
             <div className="grid size-[55px] shrink-0 place-items-center rounded-full bg-primary font-sans text-2xl text-primary-foreground">M</div>
             <span className="hidden font-sans text-xl text-bright sm:block">Mayank</span>
@@ -101,10 +101,10 @@ function Dashboard() {
           </div>
         </header>
 
-        <div className="grid gap-5 px-4 pb-8 xl:absolute xl:left-[272px] xl:top-[160px] xl:grid-cols-[740px_368px] xl:gap-5 xl:p-0">
+        <div className="grid gap-6 px-4 pb-8 sm:px-6 min-[1400px]:absolute min-[1400px]:left-[272px] min-[1400px]:top-[160px] min-[1400px]:grid-cols-[740px_368px] min-[1400px]:gap-5 min-[1400px]:p-0">
           <div className="min-w-0">
-            <section className="relative h-[132px] overflow-hidden rounded-[25px] border border-frame">
-              <div className="absolute left-8 top-[18px] z-10 max-w-[calc(100%-48px)]">
+            <section className="relative min-h-[156px] overflow-hidden sm:h-[132px] sm:min-h-0 rounded-[25px] border border-frame">
+              <div className="relative z-10 max-w-full px-6 py-6 sm:absolute sm:left-8 sm:top-[18px] sm:p-0 z-10 max-w-[calc(100%-48px)]">
                 <h1 className="whitespace-nowrap font-display text-2xl leading-[42px] sm:text-[32px]">Welcome back, Mayank</h1>
                 <p className="mt-0 max-w-[349px] font-sans text-sm leading-5 text-muted-foreground sm:text-base sm:leading-6">Stay one step ahead. Scan, Secure, and<br className="hidden sm:block" /> stay safe with GillNet AI.</p>
               </div>
@@ -113,33 +113,33 @@ function Dashboard() {
               </div>
             </section>
 
-            <section className="grid grid-cols-2 gap-3 py-5 xl:flex xl:h-[136px] xl:grid-cols-none xl:items-center xl:gap-3 xl:py-0" aria-label="Security statistics">
-              <Metric icon={<Search />} title="Total Scans" value="82" suffix="/100" tone="neutral" width="w-full xl:w-[203px]" progress />
-              <Metric icon={<Shield />} title="Safe Score" value="24" tone="safe" width="w-full xl:w-[184px]" />
-              <Metric icon={<AlertTriangle />} title="Threats" value="5" tone="danger" width="w-full xl:w-[164px]" />
-              <Metric icon={<Database />} title="Detected" value="3" tone="violet" width="w-full xl:w-[164px]" />
+            <section className="grid grid-cols-1 gap-3 py-5 min-[430px]:grid-cols-2 min-[1400px]:flex min-[1400px]:h-[136px] min-[1400px]:grid-cols-none min-[1400px]:items-center min-[1400px]:gap-3 min-[1400px]:py-0" aria-label="Security statistics">
+              <Metric icon={<Search />} title="Total Scans" value="82" suffix="/100" tone="neutral" width="w-full min-[1400px]:w-[203px]" progress />
+              <Metric icon={<Shield />} title="Safe Score" value="24" tone="safe" width="w-full min-[1400px]:w-[184px]" />
+              <Metric icon={<AlertTriangle />} title="Threats" value="5" tone="danger" width="w-full min-[1400px]:w-[164px]" />
+              <Metric icon={<Database />} title="Detected" value="3" tone="violet" width="w-full min-[1400px]:w-[164px]" />
             </section>
 
-            <section id="scan" className="h-[164px] rounded-[25px] border border-frame px-[28px] pt-[20px]">
+            <section id="scan" className="min-h-[178px] rounded-[25px] border border-frame px-[28px] pt-[20px]">
               <PanelTitle icon={<Search />} title="Quick threat Scan" subtitle="Enter a URL or paste a suspicious message to check for threats." />
               <div className="mt-[21px]"><ScanField /></div>
             </section>
 
-            <section id="password" className="mt-[18px] h-[198px] rounded-[25px] border border-frame px-[28px] pt-[20px]">
+            <section id="password" className="mt-5 min-h-[208px] rounded-[25px] border border-frame px-[28px] pt-[20px]">
               <PanelTitle icon={<KeyRound />} title="Password checker" subtitle="Check how strong your password is..." />
               <div className="mt-[20px]"><ScanField password /></div>
-              <div className="mt-[15px] flex items-center font-sans text-[15px] leading-none text-muted-foreground">
-                <span className="mr-3">Strength :</span>
-                <div className="flex min-w-0 flex-1 gap-1 xl:flex-none">
-                  <i className="h-1 min-w-0 flex-1 rounded-full bg-safe xl:w-[38px] xl:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe xl:w-[38px] xl:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe xl:w-[38px] xl:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-progress xl:w-[38px] xl:flex-none" />
+              <div className="mt-[15px] grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 font-sans text-[15px] leading-none text-muted-foreground">
+                <span className="shrink-0">Strength :</span>
+                <div className="flex min-w-0 flex-1 gap-1 min-[1400px]:flex-none">
+                  <i className="h-1 min-w-0 flex-1 rounded-full bg-safe min-[1400px]:w-[38px] min-[1400px]:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe min-[1400px]:w-[38px] min-[1400px]:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe min-[1400px]:w-[38px] min-[1400px]:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-progress min-[1400px]:w-[38px] min-[1400px]:flex-none" />
                 </div>
-                <span className="ml-2 mr-1 shrink-0 text-safe xl:ml-auto xl:mr-4">Strong</span>
+                <span className="shrink-0 text-safe min-[1400px]:ml-auto min-[1400px]:mr-4">Strong</span>
               </div>
             </section>
 
-            <section id="security" className="mt-[18px] min-h-[184px] rounded-[25px] border border-frame px-[29px] pb-6 pt-[20px] xl:h-[184px]">
+            <section id="security" className="mt-5 min-h-[184px] rounded-[25px] border border-frame px-[29px] pb-6 pt-[20px] min-[1400px]:h-[184px]">
               <PanelTitle icon={<Shield />} title="Security Overview" subtitle="Our AI helps you stay protected in real time." />
-              <div className="mt-[16px] grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <div className="mt-4 grid grid-cols-1 gap-3 min-[430px]:grid-cols-2 sm:grid-cols-4">
                 <Feature icon={<Bug />} title="Malware Detection" text="Detect malicious files and links." />
                 <Feature icon={<Anchor />} title="Phishing Protection" text="Identify phishing attempts." />
                 <Feature icon={<LockKeyhole />} title="Password Analysis" text="Check Password security and strength." />
@@ -149,7 +149,7 @@ function Dashboard() {
           </div>
 
           <aside>
-            <section id="history" className="h-[420px] rounded-[25px] border border-frame px-[25px] pt-[21px]">
+            <section id="history" className="min-h-[420px] rounded-[25px] border border-frame px-[25px] pt-[21px]">
               <div className="flex h-[41px] items-start justify-between border-b border-divider px-1">
                 <h2 className="flex items-center gap-3 font-display text-xl"><Clock3 className="size-5" />Recent Activity</h2>
                 <a href="#history" className="pt-1 font-sans text-sm">View all&nbsp; →</a>
@@ -165,16 +165,16 @@ function Dashboard() {
               </div>
             </section>
 
-            <section className="mt-[18px] h-[200px] rounded-[25px] border border-frame px-[25px] pt-[21px]">
+            <section className="mt-5 min-h-[200px] rounded-[25px] border border-frame px-[25px] pt-[21px]">
               <h2 className="flex h-[38px] items-start gap-3 border-b border-divider px-1 font-display text-xl"><Lightbulb className="size-5" />Tips for a safer Internet</h2>
               <ul className="mt-[15px] space-y-[10px] px-3 font-sans text-[11px] text-bright">
                 {["Don't click on suspicious links.", "Use strong and unique passwords.", "Be aware of phishing attempts.", "Keep your devices updated."].map(tip => <li key={tip} className="flex items-center gap-3"><span className="size-[7px] shrink-0 rounded-full bg-safe" />{tip}</li>)}
               </ul>
             </section>
 
-            <section className="mt-[18px] flex h-[184px] items-center rounded-[25px] border border-frame px-[27px]">
+            <section className="mt-5 flex min-h-[184px] items-center rounded-[25px] border border-frame px-[27px]">
               <div className="grid size-20 shrink-0 place-items-center rounded-full border border-frame/60 bg-icon"><Shield className="size-[43px]" /></div>
-              <blockquote className="ml-[25px] w-[204px] font-sans text-base leading-6 text-bright">“Security is not a process<br />but a process.”<footer className="mt-2 text-right font-sans text-[13px] italic">–Bruce Schneier</footer></blockquote>
+              <blockquote className="ml-5 min-w-0 flex-1 font-sans text-base leading-6 text-bright">“Security is not a process<br />but a process.”<footer className="mt-2 text-right font-sans text-[13px] italic">–Bruce Schneier</footer></blockquote>
             </section>
           </aside>
         </div>
