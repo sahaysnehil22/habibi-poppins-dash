@@ -3,6 +3,8 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import {
   AlertTriangle,
+  Anchor,
+  Bug,
   ChevronDown,
   Clock3,
   Database,
@@ -14,7 +16,6 @@ import {
   Menu,
   Search,
   Shield,
-  ShieldCheck,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -87,7 +88,7 @@ function Dashboard() {
             <span className="font-display text-3xl text-ink">GillNet AI</span>
             <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></Button>
           </div>
-          <nav className="flex flex-1 flex-col items-center gap-9 pt-16" aria-label="Main navigation">
+          <nav className="flex flex-1 flex-col items-center gap-14 pt-20" aria-label="Main navigation">
             {navigation.map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="font-display text-xl text-ink transition-opacity hover:opacity-55" onClick={() => setMenuOpen(false)}>{item}</a>
             ))}
@@ -107,12 +108,12 @@ function Dashboard() {
 
           <div className="grid gap-4 p-4 lg:grid-cols-[minmax(0,2fr)_minmax(285px,1fr)] lg:p-9">
             <div className="space-y-4">
-              <section className="relative h-[132px] overflow-hidden rounded-[24px] border border-border px-7 py-5">
+              <section className="relative flex h-[160px] items-center overflow-hidden rounded-[24px] border border-border px-10">
                 <div className="relative z-10">
-                  <h1 className="font-display text-3xl leading-tight">Welcome back, Mayank</h1>
-                  <p className="mt-1 max-w-sm font-sans text-sm leading-6 text-muted-foreground">Stay one step ahead. Scan, secure, and<br className="hidden sm:block" /> stay safe with GillNet AI.</p>
+                  <h1 className="font-display text-[34px] leading-tight">Welcome back, Mayank</h1>
+                  <p className="mt-2 max-w-sm font-sans text-sm leading-6 text-muted-foreground">Stay one step ahead. Scan, Secure, and<br className="hidden sm:block" /> stay safe with GillNet AI.</p>
                 </div>
-                <img src={globeImage} alt="Digital security globe" width={768} height={768} className="absolute -right-10 -top-24 size-64 object-cover opacity-55" />
+                <img src={globeImage} alt="" aria-hidden className="pointer-events-none absolute -right-8 top-1/2 h-[190%] w-auto -translate-y-1/2 object-cover object-right opacity-80 mix-blend-screen" />
               </section>
 
               <section className="grid grid-cols-2 gap-2 xl:grid-cols-4" aria-label="Security statistics">
@@ -142,10 +143,10 @@ function Dashboard() {
               <section id="security" className="rounded-[24px] border border-border px-6 py-4">
                 <PanelTitle icon={<Shield />} title="Security Overview" subtitle="Our AI helps you stay protected in real time." />
                 <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-                  <Feature icon={<ShieldCheck />} title="Malware Detection" text="Detect malicious files and links." />
-                  <Feature icon={<Shield />} title="Phishing Protection" text="Identify phishing attempts." />
-                  <Feature icon={<LockKeyhole />} title="Password Analysis" text="Check password security and strength." />
-                  <Feature icon={<Globe2 />} title="Real time threat Intel" text="Stay up-to-date with real world threats." />
+                  <Feature icon={<Bug />} title="Malware Detection" text="Detect malicious files and links." />
+                  <Feature icon={<Anchor />} title="Phishing Protection" text="Identify phishing attempts." />
+                  <Feature icon={<LockKeyhole />} title="Password Analysis" text="Check Password security and strength." />
+                  <Feature icon={<Globe2 />} title="Real time threat Intel" text="Stay up-to date with real world threats." />
                 </div>
               </section>
             </div>
@@ -176,7 +177,7 @@ function Dashboard() {
 
               <section className="flex min-h-40 items-center gap-6 rounded-[24px] border border-border px-7 py-6">
                 <div className="grid size-20 shrink-0 place-items-center rounded-full bg-icon"><Shield className="size-10" /></div>
-                <blockquote className="font-sans text-sm leading-6">“Security is not a process<br />but a process.”<footer className="mt-1 text-right font-display text-xs italic text-muted-foreground">–Bruce Schneier</footer></blockquote>
+                <blockquote className="font-sans text-base leading-7">“Security is not a process<br />but a process.”<footer className="mt-2 text-right font-display text-xs italic text-muted-foreground">–Bruce Schneier</footer></blockquote>
               </section>
             </aside>
           </div>
