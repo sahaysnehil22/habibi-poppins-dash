@@ -52,7 +52,7 @@ function ScanField({ password = false, compact = false }: { password?: boolean; 
   const check = () => setMessage(value.trim() ? (password ? "Strong password" : "No immediate threats found") : "Enter something to check");
 
   return (
-    <div className="relative min-w-0">
+    <div className={`relative min-w-0 ${password ? "pb-6" : ""}`}>
       <div className="grid min-h-[56px] grid-cols-[auto_minmax(0,1fr)_auto] items-center overflow-hidden rounded-[28px] border-2 border-frame bg-background pl-4 sm:h-[53px] sm:rounded-[40px] sm:pl-5">
         {password ? <LockKeyhole className="size-5 shrink-0" /> : <Link2 className={compact ? "size-6 shrink-0" : "size-5 shrink-0"} />}
         <input
@@ -68,7 +68,7 @@ function ScanField({ password = false, compact = false }: { password?: boolean; 
           {password ? "Check Now" : "Scan Now"}
         </Button>
       </div>
-      {message && <p className="absolute left-6 top-full mt-1 font-sans text-xs text-safe" role="status">{message}</p>}
+      {message && <p className="absolute bottom-0 left-6 font-sans text-xs leading-4 text-safe" role="status">{message}</p>}
     </div>
   );
 }
@@ -128,7 +128,7 @@ function Dashboard() {
             <section id="password" className="mt-5 min-h-[208px] rounded-[25px] border border-frame px-[28px] pt-[20px]">
               <PanelTitle icon={<KeyRound />} title="Password checker" subtitle="Check how strong your password is..." />
               <div className="mt-[20px]"><ScanField password /></div>
-              <div className="mt-[15px] grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-2 font-sans text-[15px] leading-none text-muted-foreground">
+              <div className="mt-3 grid grid-cols-[auto_minmax(60px,1fr)_auto] items-center gap-x-3 font-sans text-[15px] leading-none text-muted-foreground">
                 <span className="shrink-0">Strength :</span>
                 <div className="flex min-w-0 flex-1 gap-1 min-[1400px]:flex-none">
                   <i className="h-1 min-w-0 flex-1 rounded-full bg-safe min-[1400px]:w-[38px] min-[1400px]:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe min-[1400px]:w-[38px] min-[1400px]:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-safe min-[1400px]:w-[38px] min-[1400px]:flex-none" /><i className="h-1 min-w-0 flex-1 rounded-full bg-progress min-[1400px]:w-[38px] min-[1400px]:flex-none" />
