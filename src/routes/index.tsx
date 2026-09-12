@@ -113,7 +113,7 @@ function Dashboard() {
                   <h1 className="font-display text-[34px] leading-tight">Welcome back, Mayank</h1>
                   <p className="mt-2 max-w-sm font-sans text-sm leading-6 text-muted-foreground">Stay one step ahead. Scan, Secure, and<br className="hidden sm:block" /> stay safe with GillNet AI.</p>
                 </div>
-                <img src={globeImage} alt="" aria-hidden className="pointer-events-none absolute right-0 top-1/2 h-[260%] w-auto -translate-y-1/2 object-cover object-right mix-blend-screen" />
+                <img src={globeImage} alt="" aria-hidden className="pointer-events-none absolute -right-8 top-1/2 h-[190%] w-auto -translate-y-1/2 object-cover object-right opacity-80 mix-blend-screen" />
               </section>
 
               <section className="grid grid-cols-2 gap-2 xl:grid-cols-4" aria-label="Security statistics">
