@@ -91,13 +91,13 @@ function Dashboard() {
           </nav>
         </aside>
 
-        <header className="flex h-[106px] items-center gap-5 px-5 min-[1400px]:absolute min-[1400px]:left-[286px] min-[1400px]:top-0 min-[1400px]:h-[106px] min-[1400px]:w-[1116px] min-[1400px]:px-0">
+        <header className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 px-5 py-4 min-[700px]:flex min-[700px]:h-[106px] min-[700px]:py-0 min-[1400px]:absolute min-[1400px]:left-[286px] min-[1400px]:top-0 min-[1400px]:w-[1116px] min-[1400px]:px-0">
           <Button variant="ghost" size="icon" className="min-[1400px]:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu /></Button>
-          <div className="min-w-0 flex-1 min-[1400px]:w-[740px] min-[1400px]:flex-none"><ScanField compact /></div>
-          <div className="ml-auto flex items-center gap-3">
+          <div className="order-3 col-span-2 min-w-0 min-[700px]:order-none min-[700px]:col-span-1 min-[700px]:flex-1 min-[1400px]:w-[740px] min-[1400px]:flex-none"><ScanField compact /></div>
+          <div className="order-2 ml-auto flex items-center gap-3 min-[700px]:order-none">
             <div className="grid size-[55px] shrink-0 place-items-center rounded-full bg-primary font-sans text-2xl text-primary-foreground">M</div>
-            <span className="hidden font-sans text-xl text-bright sm:block">Mayank</span>
-            <ChevronDown className="size-4 text-bright" />
+            <span className="hidden font-sans text-xl text-bright min-[700px]:block">Mayank</span>
+            <ChevronDown className="hidden size-4 text-bright min-[700px]:block" />
           </div>
         </header>
 
