@@ -16,7 +16,6 @@ import {
   Menu,
   Search,
   Shield,
-  ShieldCheck,
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
